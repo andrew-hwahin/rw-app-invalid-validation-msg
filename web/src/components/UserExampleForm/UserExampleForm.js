@@ -1,9 +1,9 @@
 import {
+  FieldError,
   Form,
   FormError,
-  FieldError,
   Label,
-  TextField,
+  NumberField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -29,36 +29,20 @@ const UserExampleForm = (props) => {
         />
 
         <Label
-          name="email"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Email
-        </Label>
-        <TextField
-          name="email"
-          defaultValue={props.userExample?.email}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="email" className="rw-field-error" />
-
-        <Label
           name="name"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Name
+          Age
         </Label>
-        <TextField
-          name="name"
-          defaultValue={props.userExample?.name}
+        <NumberField
+          name="age"
+          defaultValue={props.userExample?.age}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
+          validation={{ required: true, min: 1, max: 18 }}
         />
-        <FieldError name="name" className="rw-field-error" />
+        <FieldError name="age" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
